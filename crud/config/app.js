@@ -33,8 +33,8 @@ app.use(express.static(path.join(__dirname, '../node_modules')));
 // because it's in a different folder, ../ has to be 
 // used to re-route the connection
 
-app.use('/', indexRouter);
-app.use('/items',itemsRouter);
+//app.use('/', indexRouter);
+app.use('/',itemsRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
