@@ -34,7 +34,8 @@ app.use(express.static(path.join(__dirname, '../node_modules')));
 // used to re-route the connection
 
 //app.use('/', indexRouter);
-app.use('/',itemsRouter);
+app.use('/items',itemsRouter);
+app.use('/',indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

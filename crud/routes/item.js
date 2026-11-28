@@ -21,7 +21,7 @@ router.get('/add',async(req,res,next)=>{
         })
 
     }
-})
+});
 
 
 //posts info
@@ -34,7 +34,7 @@ router.post('/add',async(req,res,next)=>{
 
         });
         Item.create(newItem).then(()=>{
-            res.redirect('/')
+            res.redirect('/items')
         });
             
     }
@@ -45,7 +45,37 @@ router.post('/add',async(req,res,next)=>{
         })
 
     }
-})
+});
+
+
+
+// edit/:id is used to edit the contents of the database
+
+
+/*get and post operations are needed to post information 
+on the database and get that same information from the database*/
+
+
+//read
+router.get('/',async(req,res,next) => {
+    try{
+        const Itemlist = await Item.find();
+        res.render('Items/list',{
+            title: 'Items',
+            itemlist: Itemlist
+            
+        })
+    }
+    catch(err){
+        console.log(err);
+        res.render('Items/list',{
+            error:'error on the server'
+        })
+
+    }
+
+});
+
 
 //updates info
 router.get('/edit/:id',async(req,res,next)=>{
@@ -62,7 +92,7 @@ router.get('/edit/:id',async(req,res,next)=>{
         next(err);
 
     }
-})
+});
 
 //Posts updated info
 router.post('/edit/:id',async(req,res,next)=>{
@@ -75,7 +105,7 @@ router.post('/edit/:id',async(req,res,next)=>{
             "price":req.body.price
         })
         Item.findByIdAndUpdate(id,updatedItem).then(()=>{
-            res.redirect('/')
+            res.redirect('/items')
         })
     }
     catch(err){
@@ -84,43 +114,31 @@ router.post('/edit/:id',async(req,res,next)=>{
             error:'error on the server'
         })
     }
-})
+});
 
 // edit/:id is used to edit the contents of the database
 
+
 //deletes info
-router.get('/delete/:id',async(req,res,next)=>{})
-
-/*get and post operations are needed to post information 
-on the database and get that same information from the database*/
-
-
-//read
-router.get('/',async(req,res,next) => {
+router.get('/delete/:id',async(req,res,next)=>{
     try{
-        const Itemlist = await Item.find();
-        res.render('Items/list',{
-            title: 'Items',
-            itemlist: Itemlist
-            // javascript is case sensitive
-            //both variables cantbe the same
+        let id = req.params.id;
+        Item.deleteOne({_id:id}).then(()=>{
+            res.redirect('/items')
         })
+        
     }
     catch(err){
-        console.log(err);
+        console.error(err);
         res.render('Items/list',{
             error:'error on the server'
         })
-
     }
+});
 
-})
-
-//update
-
-
-
-
-//delete
 
 module.exports = router;
+
+
+
+

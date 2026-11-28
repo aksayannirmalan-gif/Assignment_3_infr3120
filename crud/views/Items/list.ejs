@@ -8,7 +8,7 @@
         <div class ="offset-md-1 col-md-10">
             <h1><%= title %></h1>
             <br><br>
-            <a href="/add" class="btn-btn-add">
+            <a href="/items/add" class="btn btn-add">
                 <i class="fa-solid fa-plus"></i> Add Product
             </a>
             <br><br>
@@ -24,14 +24,14 @@
                         <td class="text-center col-1"><%=itemlist[count].location%></td>
                         <td class="text-center col-1"><%=itemlist[count].price%></td>
                         <td class="text-center col-1">
-                            <a href="/edit/<%= itemlist[count]._id%>"
-                                class="btn-btn-edit">
+                            <a href="/items/edit/<%= itemlist[count]._id%>"
+                                class="btn btn-edit">
                                 <i class="fa-solid fa-pen-to-square"></i> Edit
                             </a>
                         </td>
                         <td class="text-center col-1">
-                            <a href="/delete/<%= itemlist[count]._id%>"
-                                class="btn-btn-delete">
+                            <a href="/items/delete/<%= itemlist[count]._id%>"
+                                class="btn btn-delete">
                                 <i class="fa-solid fa-trash"></i> Delete
                             </a>
                         </td>

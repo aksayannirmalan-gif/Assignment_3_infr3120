@@ -1,9 +1,14 @@
 body {
   padding: 40px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background:linear-gradient(to left, #702CF2 , #2F2CF2 );
+  
 }
 
-a {
-  color: #00B7FF;
+.container {
+  margin-right:auto;
+  margin-left:auto;
+  
+ 
 }
 
